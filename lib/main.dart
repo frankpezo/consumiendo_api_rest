@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
     //1.2. await nos sirve para hacer esa espera
     //1.3. Para que podamos traer el link si progrmaa debemos colocarlo dentro del Uri.dataFromString
     var urlLink = Uri.parse(
-        "https://api.giphy.com/v1/gifs/trending?api_key=krkMOOfWrkatvx3M1cw3G04tqoWMwOBA&limit=10&rating=g");
+        "https://api.giphy.com/v1/gifs/trending?api_key=krkMOOfWrkatvx3M1cw3G04tqoWMwOBA&limit=15&rating=g");
     final response = await http.get(urlLink);
 
 //1.4. Creamos un ararys vacío de una lista de Gif
@@ -114,11 +114,16 @@ List<Widget> _listGifs(List<Gif> data) {
         child: Column(
       children: [
         //Para ver el img
-        Image.network(gif.url),
-        Padding(
+        Expanded(
+          child: Image.network(
+            gif.url,
+            fit: BoxFit.cover,
+          ),
+        ),
+        /*Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(gif.name),
-        ),
+        ),*/
       ],
     )));
   }
